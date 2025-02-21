@@ -1,0 +1,4 @@
+*.log
+*.dat
+IP/
+/run/FIR
