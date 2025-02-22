@@ -12,5 +12,8 @@ You can put input samples of function in this folder for testing the correctness
 contains synthesis and main files
 
 ## run:
-this folder containes script files for defining project and directive file as well as batch file,
-FIR project will be created during compilation. There are batch commands to open it.
+This folder containes script files for defining project and directive files to test various optimization techniques.
+You can change the optimisation directives in directive files or add another independent directive file to compile and compare the results.
+For comparing the solutions open the project using below command and go to project-> Compare Reports
+
+vitis_hls -p FIR
