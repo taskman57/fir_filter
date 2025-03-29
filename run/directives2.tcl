@@ -1,6 +1,6 @@
 ##############################################
 ##                                          ##
-##      directive for solution2             ##
+##      directives for solution2            ##
 ##                                          ##
 ##############################################
 set_directive_top -name FIR "fir"

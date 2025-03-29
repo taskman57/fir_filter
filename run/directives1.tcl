@@ -1,6 +1,6 @@
 ##############################################
 ##                                          ##
-## directives for FIR Core in HLS 2023.1    ##
+##      directives for solution1            ##
 ##                                          ##
 ##############################################
 set_directive_top -name FIR "fir"
