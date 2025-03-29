@@ -43,8 +43,8 @@ file mkdir ../Impl_report/
 # if export has only syn, then uncomment the below line
 # exec cp -f ${top_name}/solution1/impl/report/vhdl/export_syn.rpt ../Impl_report/export_syn.rpt
 # if export has impl, then uncomment the below lines
-exec cp -f ${top_name}/solution1/impl/report/vhdl/export_impl.rpt ../Impl_report/export_impl.rpt
-exec cp -f ${top_name}/solution1/impl/report/vhdl/${top_name}_export.rpt ../Impl_report/${top_name}_export.rpt
+exec cp -f ${top_name}/${solution}/impl/report/vhdl/export_impl.rpt ../Impl_report/export_impl.rpt
+exec cp -f ${top_name}/${solution}/impl/report/vhdl/${top_name}_export.rpt ../Impl_report/${top_name}_export.rpt
 
 # uncomment the following line to compare 2 solutions
 # vitis_hls -p FIR
