@@ -1,5 +1,5 @@
 # Script files for Vitis HLS FIR Filter
-This was done with V2023.1
+This was done with V2023.1 and also tested with Vitis HLS v2024.2
 This project offers a compelling opportunity to explore and apply various optimization strategies, providing a deeper understanding of how these techniques work in practice. Through hands-on experimentation and testing of different solutions, participants can uncover effective ways to balance logical efficiency with optimal performance, making informed decisions to achieve the best possible outcomes.
 
 ## Project folders:
