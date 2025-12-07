@@ -1,5 +1,6 @@
 *.log
 *.dat
+!/ref/golden_output.dat
 IP/
 /run/FIR
 *.rpt

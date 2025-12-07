@@ -11,6 +11,9 @@ You can put input samples of function in this folder for testing the correctness
 ## source:
 contains synthesis and main files
 
+## m file:
+This folder contains MATLAB/Octave scripts used to run simulations and generate the golden reference results for Vitis HLS verification.
+
 ## run:
 This folder containes script files for defining project and directive files to test various optimization techniques.
 You can change the optimisation directives in directive files or add another independent directive file to compile and compare the results.
