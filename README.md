@@ -14,6 +14,9 @@ contains synthesis and main files
 ## m file:
 This folder contains MATLAB/Octave scripts used to run simulations and generate the golden reference results for Vitis HLS verification.
 
+## Docs
+This folder contains snapshots of input/output signals, in-band and out-of-band attenuation measurements, and the filter frequency response.
+
 ## run:
 This folder containes script files for defining project and directive files to test various optimization techniques.
 You can change the optimisation directives in directive files or add another independent directive file to compile and compare the results.
