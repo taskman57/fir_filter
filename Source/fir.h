@@ -4,7 +4,6 @@
 
 typedef short			coef_t;
 typedef short			data_t;
-typedef unsigned short	data_ut;
 typedef int				acc_t;
 
 void fir (
