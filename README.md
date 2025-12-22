@@ -1,25 +1,24 @@
-# Script files for Vitis HLS FIR Filter
-This was done with V2023.1 and also tested with Vitis HLS v2024.2
-This project offers a compelling opportunity to explore and apply various optimization strategies, providing a deeper understanding of how these techniques work in practice. Through hands-on experimentation and testing of different solutions, participants can uncover effective ways to balance logical efficiency with optimal performance, making informed decisions to achieve the best possible outcomes.
+# Script Files for Vitis HLS FIR Filter
 
-## Project folders:
+This repository contains script files and supporting resources for implementing and optimizing a FIR filter using **Vitis HLS**.  
+The project was developed using **Vitis HLS v2023.1** and has also been validated with **Vitis HLS v2024.2**.
 
+This project provides a practical framework for exploring and evaluating HLS optimization strategies. Through hands-on experimentation with different directive sets and synthesis configurations, users can gain insight into how design choices affect scheduling, resource utilization, and performance. The focus is on understanding trade-offs and making informed decisions to achieve an efficient balance between throughput, latency, and hardware cost.
 
-## ref:
-You can put input samples of function in this folder for testing the correctness of algorithm, either for C Simulation or Co/Sim RTL simulation
+## **PROJECT FOLDERS**
 
-## source:
-contains synthesis and main files
+## **REF**
+This folder contains input sample files used to verify the functional correctness of the FIR algorithm. These samples can be used for both **C simulation** and **RTL co-simulation**.
 
-## m file:
-This folder contains MATLAB/Octave scripts used to run simulations and generate the golden reference results for Vitis HLS verification.
+## **SOURCE**
+Contains the FIR source code, synthesis files, and the main testbench used during HLS compilation and simulation.
 
-## Docs
-This folder contains snapshots of input/output signals, in-band and out-of-band attenuation measurements, and the filter frequency response.
+## **M FILE**
+This folder contains MATLAB/Octave scripts used to run simulations and generate **golden reference results** for verification in Vitis HLS.
 
-## run:
-This folder containes script files for defining project and directive files to test various optimization techniques.
-You can change the optimisation directives in directive files or add another independent directive file to compile and compare the results.
-For comparing the solutions open the project using below command and go to project-> Compare Reports
+## **DOCS**
+This folder contains documentation artifacts, including snapshots of input and output signals, in-band and out-of-band attenuation measurements, and frequency response plots of the FIR filter.
 
-vitis_hls -p FIR
+## **RUN**
+This folder contains script file for defining the project setup and directive configuration used to evaluate optimization techniques.  
+Users can modify existing directive file or add new, independent directive sets to synthesize and compare alternative solutions.
