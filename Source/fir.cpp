@@ -2,7 +2,7 @@
 
 void fir (
   data_t *y,
-  coef_t c[N],
+//  coef_t c[N],
   data_t x
   )
 {
@@ -30,7 +30,7 @@ void fir (
 			data = shift_reg[i];
 			dat2 = shift_reg[N-i-1];
 		}
-		temp = (data + dat2)*c[i];
+		temp = (data + dat2)*taps[i];
 		acc+=temp;
 	}
 	Shifting_Part:

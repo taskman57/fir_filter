@@ -6,15 +6,6 @@ using namespace std;
 #include "../ref/inp.h"
 #include "fir.h"
 
-static coef_t taps[N] = {
-		-4,     19,     25,     39,     59,     85,    118,    158,    205,
-		261,    324,    395,    473,    558,    647,    741,    837,    933,
-		1028,   1119,   1204,   1282,   1350,   1407,   1451,   1481,   1496,
-		1496,   1481,   1451,   1407,   1350,   1282,   1204,   1119,   1028,
-		933,    837,    741,    647,    558,    473,    395,    324,    261,
-		205,    158,    118,     85,     59,     39,     25,     19,     -4
-	};
-
 int main (int argc, char **argv) {
 	const int    SAMPLES=2000;
 
@@ -34,7 +25,7 @@ int main (int argc, char **argv) {
 		cout << " Signal: " << hex << Signal << "\n";  // Print as hex
 
 		// Execute the function with latest input
-		fir(&output,taps,Signal);
+		fir(&output/*,taps*/,Signal);
 
 		// Save the results
 		fp << i << " " << Signal << " " << output << endl;
