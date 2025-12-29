@@ -79,16 +79,22 @@ function myfir()
     xlabel('Time (s)');
     grid minor on;
 
-    inp_fft = fft(x,L);
-    mag2 = abs(inp_fft/L);                          % Normalization by the length of signal
+    black_win = blackman(L)';
+    x_win = x .* black_win;                         % Windowing to reduce spectral leakage and improve dynamic range.
+    inp_fft = fft(x_win,L);
+    win_gain = sum(black_win);
+    mag2 = abs(inp_fft/win_gain);                   % Normalization by window gain
     inp_mag_fft = mag2(1:L/2+1);                    % discarding negative elements of fft
     inp_mag_fft(2:end-1) = 2*inp_mag_fft(2:end-1);  % only double positive freq? neither DC nor Nyquist!
     f=(fs/L)*[0:L/2];                               % used for scaling the x-axis
 
     [max_fft1, idx1] = max(inp_mag_fft);            % finding main tone!
-    [max_fft2, idx2] = max(inp_mag_fft(idx1+1:end));% finding secodn tone which will be attenuatesd
+    search_offset = 20;                             % to escape from shoulder bins around main bin
+    [max_fft2, idx2_rel] = max(inp_mag_fft(idx1+ search_offset +1:end));% finding second tone which will be attenuatesd
     printf(' dB difference of input: %d dB \n', 20*log10(max_fft1/max_fft2));
-
+    idx2 = search_offset + idx2_rel;                % Calculate absolute index of second tone
+    idx1
+    idx2
     figure;
     subplot(2,1,1);
     plot (f, inp_mag_fft);
@@ -106,9 +112,10 @@ function myfir()
     'VerticalAlignment', 'bottom', 'Color', 'red', 'FontSize', 12);
     grid minor on;
 
-
-    out_fft = fft(output, L);
-    mag2 = abs(out_fft/L);
+    out_win = output .* black_win;                  % Windowing to reduce spectral leakage and improve dynamic range.
+    out_fft = fft(out_win, L);
+    out_fft = out_fft .* black_win;
+    mag2 = abs(out_fft/win_gain);
     out_mag_fft = mag2(1:L/2+1);
     out_mag_fft(2:end-1) = 2*out_mag_fft(2:end-1);
     subplot(2,1,2);
