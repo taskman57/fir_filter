@@ -18,7 +18,7 @@ static coef_t taps[N] = {
 void fir (
   data_t *y,
 //  coef_t c[N],
-  data_t x
+  data_t *x
   );
 
 #endif

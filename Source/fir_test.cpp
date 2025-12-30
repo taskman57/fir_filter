@@ -25,7 +25,7 @@ int main (int argc, char **argv) {
 		cout << " Signal: " << hex << Signal << "\n";  // Print as hex
 
 		// Execute the function with latest input
-		fir(&output/*,taps*/,Signal);
+		fir(&output/*,taps*/,&Signal);
 
 		// Save the results
 		fp << i << " " << Signal << " " << output << endl;
