@@ -1,5 +1,6 @@
 #ifndef FIR_H_
 #define FIR_H_
+#include <hls_stream.h>
 #define N	54
 
 typedef short			coef_t;
@@ -16,9 +17,8 @@ static coef_t taps[N] = {
 	};
 
 void fir (
-  data_t *y,
-//  coef_t c[N],
-  data_t *x
+  hls::stream<data_t> &y,
+  hls::stream<data_t> &x
   );
 
 #endif

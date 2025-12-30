@@ -1,9 +1,8 @@
 #include "fir.h"
 
 void fir (
-  data_t *y,
-//  coef_t c[N],
-  data_t *x
+  hls::stream<data_t> &y,
+  hls::stream<data_t> &x
   )
 {
 	static data_t shift_reg[N];
@@ -11,7 +10,7 @@ void fir (
 	data_t data, dat2, temp_x;
 	int i;
 	acc=0;
-	temp_x = *x;
+	temp_x = x.read();
 	Shift_Accum_Loop:
 	for (i=N-1;i>=0;i--) {
 		if (i==0) {
@@ -35,5 +34,5 @@ void fir (
 		acc+=temp;
 	}
 	Shifting_Part:
-	*y=(acc>>16);
+	y.write(acc>>16);
 }

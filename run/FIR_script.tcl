@@ -17,6 +17,7 @@ set_part {xc7z010clg400-1}
 create_clock -period 5 -name Synth_Clk
 set_clock_uncertainty 0.5
 source directives1.tcl
+# If you want to see C simulation, enable this line
 # csim_design -clean -O
 csynth_design -dump_post_cfg
 file mkdir ../Synth_report/solution1
