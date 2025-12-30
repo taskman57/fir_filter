@@ -3,18 +3,19 @@
 void fir (
   data_t *y,
 //  coef_t c[N],
-  data_t x
+  data_t *x
   )
 {
 	static data_t shift_reg[N];
 	acc_t acc,temp;
-	data_t data, dat2;
+	data_t data, dat2, temp_x;
 	int i;
 	acc=0;
+	temp_x = *x;
 	Shift_Accum_Loop:
 	for (i=N-1;i>=0;i--) {
 		if (i==0) {
-			shift_reg[0]=x;
+			shift_reg[0]=temp_x;
 		}
 		else {
 			shift_reg[i]=shift_reg[i-1];
@@ -23,7 +24,7 @@ void fir (
 	Mirroring_Accum_Loop:
 	for (i=N/2-1;i>=0;i--) {
 		if (i==0) {
-			data = x;
+			data = temp_x;
 			dat2 = shift_reg[N-1];
 		}
 		else {
