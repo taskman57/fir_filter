@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 using namespace std;
 #include "../ref/inp.h"
 #include <hls_stream.h>
@@ -23,14 +24,15 @@ int main (int argc, char **argv) {
 	for (i=0;i<SAMPLES;i++) {
 		temp = (data_t)((int)inpsig[i] - 32768);
 		xin.write(temp);
-		cout << " xin: " << hex << temp << "\n";  // Print as hex
+		// cout << " xin: " << hex << temp << "\n";  // Print as hex
 
 		// Execute the function with latest input
-		fir(yout/*,taps*/,xin);
+		fir(yout,xin);
 		out = yout.read();
 
 		// Save the results
-		fp << i << " " << temp << " " << out << endl;
+		//fp << i << " " << temp << " " << out << endl;
+		cout << hex << uppercase << setw(4) << setfill('0') << out << endl;
 	}
 	fp.close();
 	if (argc > 1 && strcmp(argv[1], "cosim") == 0) {

@@ -17,17 +17,24 @@ set_part {xc7z010clg400-1}
 create_clock -period 5 -name Synth_Clk
 set_clock_uncertainty 0.5
 source directives1.tcl
-# If you want to see C simulation, enable this line
-# csim_design -clean -O
-csynth_design -dump_post_cfg
-file mkdir ../Synth_report/solution1
-exec cp -f ${top_name}/solution1/syn/report/${top_name}_csynth.rpt ../Synth_report/solution1/${top_name}_csynth.rpt
-exec cp -f ${top_name}/solution1/syn/report/csynth.rpt ../Synth_report/solution1/csynth.rpt
+# Pass "sim" or "synth" as an argument: runme.bat sim  /  runme.bat synth
+set mode "sim"
+if {[info exists ::env(MODE)]} {
+    set mode $::env(MODE)
+}
 
-# Dump Trace could be either of port, all or none!
-config_cosim -argv cosim -tool xsim -trace_level port
-cosim_design -tool xsim -trace_level port -argv {cosim}
-
-export_design -rtl vhdl -format ip_catalog -output ../IP/${top_name}.zip
+if {$mode eq "sim"} {
+    csim_design -clean -O
+} elseif {$mode eq "synth"} {
+     csynth_design -dump_post_cfg
+    file mkdir ../Synth_report/solution1
+    exec cp -f ${top_name}/solution1/syn/report/${top_name}_csynth.rpt ../Synth_report/solution1/${top_name}_csynth.rpt
+    exec cp -f ${top_name}/solution1/syn/report/csynth.rpt ../Synth_report/solution1/csynth.rpt
+    # config_cosim -argv cosim -tool xsim -trace_level port
+    # cosim_design -tool xsim -trace_level port -argv {cosim}
+    # export_design -rtl vhdl -format ip_catalog -output ../IP/${top_name}.zip
+} else {
+    puts "Unknown mode: $mode (use 'sim' or 'synth')"
+}
 
 exit

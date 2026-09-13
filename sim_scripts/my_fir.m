@@ -1,7 +1,7 @@
 function myfir()
 %------------------------------------------------------------
 % Golden Reference FIR Script (Octave)
-% Implements 54-tap FIR filter in fixed-point arithmetic
+% Implements 50-tap FIR filter in fixed-point arithmetic
 % Produces output file to use as gold result by Vitis HLS
 %------------------------------------------------------------
 
@@ -9,7 +9,7 @@ function myfir()
     clear all;
     clc;
     %% Parameters
-    N = 54;                 % Number of taps
+    N = 50;                 % Number of taps
     SAMPLES = 2000;         % Number of input samples
     mid = 32768;            % For converting uint16 -> int16
     fs = 100e6;             % 100 MHz sampling frequency
@@ -18,12 +18,11 @@ function myfir()
 
 % Coefficients (int16)
     taps = int16([...
-    -4, 19, 25, 39, 59, 85, 118, 158, 205,...
-    261, 324, 395, 473, 558, 647, 741, 837, 933,...
-    1028, 1119, 1204, 1282, 1350, 1407, 1451, 1481, 1496,...
-    1496, 1481, 1451, 1407, 1350, 1282, 1204, 1119, 1028,...
-    933, 837, 741, 647, 558, 473, 395, 324, 261,...
-    205, 158, 118, 85, 59, 39, 25, 19, -4 ]);
+    59, 55, 79, 108, 143, 184, 232, 285, 345, 410,...
+    480, 553, 630, 709, 788, 866, 942, 1015, 1082, 1143,...
+    1195, 1239, 1273, 1295, 1274, 1274, 1295, 1273, 1239, 1195,...
+    1143, 1082, 1015, 942, 866, 788, 709, 630, 553, 480,...
+    410, 345, 285, 232, 184, 143, 108, 79, 55, 59 ]);
 
     % Input signal (uint16)
     inpsig = [...
@@ -70,7 +69,7 @@ function myfir()
     t=[1:SAMPLES]/fs;
     subplot(2,1,1);
     plot(t,x);
-    title(' Input signal containing main and out of band tones');
+    title(sprintf('%d tap FIR: Input signal containing main and out of band tones', N));
     xlabel('Time (s)');
     grid minor on;
     subplot(2,1,2);
@@ -92,7 +91,7 @@ function myfir()
     figure;
     subplot(2,1,1);
     plot (f, inp_mag_fft);
-    title('Input signal fft main and out of band tones');
+    title(sprintf('%d tap FIR: Input signal fft main and out of band tones', N));
     xlabel('Frequency (Hz)');
     grid minor on;
     hold on;
@@ -147,7 +146,7 @@ function myfir()
     grid on;
     xlabel("Frequency (MHz)");
     ylabel("Magnitude (dB)");
-    title("FIR Frequency Response with -3 dB Cutoff");
+    title(sprintf(" %d tap FIR Frequency Response with -3 dB Cutoff", N));
     hold on;
     % Mark the -3 dB point
     plot(f_3dB/1e6, magdB(idx), 'ro', 'MarkerSize', 8, 'LineWidth', 3);
